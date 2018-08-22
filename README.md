@@ -3,6 +3,7 @@
 App for simulate Investment Fixed Income
 
 Api https://api-simulator-calc.easynvest.com.br/calculator/simulate
+
 Documentation https://github.com/easynvest/simulador-rendafixa
 
 <table>
