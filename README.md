@@ -8,7 +8,7 @@ Documentation https://github.com/easynvest/simulador-rendafixa
 <table>
 <tr>
 <td>
-<img src="https://github.com/charleston10/simulator-investment-fixed-income-reactive-native/blob/master/images/image_sample.png" width="300" height="500" />
+<img src="https://github.com/charleston10/simulator-investment-fixed-income-reactive-native/blob/master/images/image_sample.png"  />
 </td>
 <td>
   </tr>
