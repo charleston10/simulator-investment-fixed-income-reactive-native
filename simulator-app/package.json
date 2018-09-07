@@ -5,22 +5,68 @@
   "devDependencies": {
     "react-native-scripts": "1.14.0",
     "jest-expo": "~27.0.0",
-    "react-test-renderer": "16.3.1"
+    "react-test-renderer": "16.3.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "19.0.0",
+    "babel-plugin-relay": "1.5.0",
+    "babel-preset-react-native": "1.9.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-flowtype": "^2.32.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react-native": "^2.3.2",
+    "jest": "18.1.0",
+    "lint-staged": "^3.4.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.2.2",
+    "react-devtools": "^2.1.0",
+    "relay-compiler": "1.5.0"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 120",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "scripts": {
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier --write --single-quote true --trailing-comma all --print-width 120",
+    "android:apk": "cd android && ./gradlew assembleRelease",
+    "android:install": "adb install android/app/build/outputs/apk/app-release.apk",
+    "clear": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "devtools": "react-devtools",
+    "lint": "eslint src",
+    "lint:staged": "lint-staged",
+    "relay": "relay-compiler --src ./src --schema data/schema.graphql",
+    "relay:watch": "yarn relay -- --watch"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native"
   },
   "dependencies": {
+    "@expo/vector-icons": "^6.3.1",
+    "babel-preset-react-native-stage-0": "^1.0.1",
     "expo": "^27.0.1",
+    "hoist-non-react-statics": "^2.5.0",
+    "idx": "^2.3.0",
+    "moment": "^2.22.1",
     "react": "16.3.1",
-    "react-native": "~0.55.2"
+    "react-native": "~0.55.2",
+    "react-native-keyboard-spacer": "^0.4.1",
+    "react-native-linear-gradient": "^2.4.0",
+    "react-native-material-design": "^0.3.7",
+    "react-native-material-textfield": "^0.12.0",
+    "react-native-modal": "^6.0.0",
+    "react-native-modal-datetime-picker": "^5.1.0",
+    "react-native-timeline-listview": "^0.2.3",
+    "react-navigation": "2.9.1",
+    "react-relay": "1.5.0",
+    "styled-components": "^3.2.6"
   }
 }
