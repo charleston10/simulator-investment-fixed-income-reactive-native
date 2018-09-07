@@ -7,12 +7,14 @@ class InputText extends React.Component {
         const { label, text, placeHolder } = this.props;
 
         return (
-            <View>
-                <Text>{label}</Text>
+            <View style={styles.container}>
+                <Text style={styles.label}>{label}</Text>
                 <TextInput
-                    style={{ height: 40 }}
+                    style={styles.textInput}
                     placeholder={placeHolder}
                     value={text}
+                    keyboardType='numeric'
+                    maxLength={10} 
                 />
             </View>
         );
@@ -26,22 +28,19 @@ InputText.propTypes = {
 };
 
 const styles = StyleSheet.create({
-    textStyle: {
-        fontSize: 20,
-        color: '#ffffff',
-        textAlign: 'center'
-    },
-    buttonStyle: {
-        margin: 10,
+    container: {
         width: '100%',
-        height: 50,
-        backgroundColor: 'rgba(0, 200, 179, 1)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 0,
-        borderRadius: 30,
-        elevation: 2
+        marginTop: 8
+    },
+    label: {
+        marginLeft: 3,
+        fontSize: 16
+    },
+    textInput: {
+        marginTop: 8,
+        fontSize: 20,
+        paddingBottom: 6,
+        paddingLeft: 3
     }
 });
 
