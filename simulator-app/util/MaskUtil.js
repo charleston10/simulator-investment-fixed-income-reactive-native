@@ -3,8 +3,6 @@ export default {
         var size = value.length;
         if (size === 2) { value += '/'; }
         if (size === 5) { value += '/'; }
-
-        console.log(value)
         return value
     },
     percent: (value) => {
