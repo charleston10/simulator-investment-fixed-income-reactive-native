@@ -21,7 +21,7 @@ class InputText extends React.Component {
             keyboardType: "default"
         }
 
-        this.onHandleChangeText = this.onHandleChangeText.bind(this)
+        this.handleChangeText = this.handleChangeText.bind(this)
         this.handleKeyPress = this.handleKeyPress.bind(this)
 
         this.bindViews()
@@ -44,7 +44,7 @@ class InputText extends React.Component {
         }
     }
 
-    onHandleChangeText = (value) => {
+    handleChangeText = (value) => {
         this.setState({ text: value })
     }
 
@@ -76,7 +76,7 @@ class InputText extends React.Component {
                     maxLength={this.state.maxLength}
                     keyboardType={this.state.keyboardType}
                     value={this.state.text}
-                    onChangeText={this.onHandleChangeText}
+                    onChangeText={this.handleChangeText}
                     onKeyPress={this.handleKeyPress}
                 />
             </View>
