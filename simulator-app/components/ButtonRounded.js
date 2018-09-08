@@ -8,10 +8,8 @@ class ButtonRounded extends React.Component {
 
         return (
             <View>
-                <TouchableOpacity style={styles.button}
-                    onPress={() => onPress()}>
+                <TouchableOpacity style={styles.button} onPress={() => onPress()}>
                     <Text style={styles.text}>{text}</Text>
-
                 </TouchableOpacity>
             </View >
         );

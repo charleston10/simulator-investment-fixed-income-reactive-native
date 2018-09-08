@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ToolbarAndroid } from 'react-native';
+import { StyleSheet, View, ToolbarAndroid, KeyboardAvoidingView } from 'react-native';
 import ButtonRounded from '../components/ButtonRounded'
 import InputText from '../components/InputText'
 
@@ -12,11 +12,11 @@ class CalculateScreen extends React.Component {
                         style={styles.toolbar}
                         title="Simulador Renda Fixa Pós-Fixado" />
                 </View>
-                <View style={styles.containerForm} >
-                    <InputText label="Quanto você gostaria de aplicar? *" placeHolder="R$" style={styles.inputText} />
-                    <InputText label="Qual a data de vencimento do investimento? *" placeHolder="dia/mês/ano" style={styles.inputText} />
-                    <InputText label="Qual o percentual do CDI do investimento? *" placeHolder="100%" style={styles.inputText} />
-                </View>
+                <KeyboardAvoidingView style={styles.containerForm} behavior="padding" enabled>
+                    <InputText style={styles.inputText} label="Quanto você gostaria de aplicar? *" placeHolder="R$" type='Currency' />
+                    <InputText style={styles.inputText} label="Qual a data de vencimento do investimento? *" placeHolder="dia/mês/ano" type='Date' />
+                    <InputText style={styles.inputText} label="Qual o percentual do CDI do investimento? *" placeHolder="100%" type='Percent' />
+                </KeyboardAvoidingView>
                 <View style={styles.containerBottom} >
                     <ButtonRounded
                         text="SIMULAR"
