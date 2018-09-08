@@ -21,7 +21,6 @@ class InputText extends React.Component {
             keyboardType: "default"
         }
 
-        this.onKeyPress = this.onKeyPress.bind(this)
         this.onChangeText = this.onChangeText.bind(this)
 
         this.bindViews()
@@ -44,18 +43,11 @@ class InputText extends React.Component {
         }
     }
 
-    onKeyPress = ({ nativeEvent: { key: keyValue } }) => {
-        if (keyValue === KEY_CODE_BACKSPACE) {
-            //do nothing
-        }
-    }
-
     onChangeText = (value) => {
         switch (this.props.type) {
             case TYPE_DATE:
                 var masked = Mask.date(value)
                 this.setState({ text: masked })
-                console.log("value %s <===> masked %s", value, masked)
                 break;
             case TYPE_PERCENT:
                 var masked = Mask.percent(value)
@@ -70,12 +62,11 @@ class InputText extends React.Component {
                 <Text style={styles.label}>{this.props.label}</Text>
                 <TextInput
                     style={styles.textInput}
-                    text={this.state.text}
                     placeholder={this.props.placeholder}
                     maxLength={this.state.maxLength}
                     keyboardType={this.state.keyboardType}
+                    value={this.state.text}
                     onChangeText={this.onChangeText}
-                    onKeyPress={this.onKeyPress}
                 />
             </View>
         );
