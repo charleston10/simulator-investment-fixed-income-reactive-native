@@ -10,7 +10,6 @@ export default {
     },
     currency: (value) => {
         var unmask = value.replace(RegExp('[R$.,]'), "")
-
         return unmask
     }
 }

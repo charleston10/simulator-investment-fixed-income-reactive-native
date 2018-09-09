@@ -1,8 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import React from "react"
+import PropTypes from "prop-types"
+import { StyleSheet, View, Text, TextInput } from "react-native"
 
 import Mask from "../util/MaskUtil"
+import Validation from "../util/ValidationUtil"
 
 const TYPE_CURRENCY = "Currency"
 const TYPE_DATE = "Date"
@@ -23,6 +24,7 @@ class InputText extends React.Component {
 
         this.handleChangeText = this.handleChangeText.bind(this)
         this.handleKeyPress = this.handleKeyPress.bind(this)
+        this.handleSelectionChange = this.handleSelectionChange.bind(this)
 
         this.bindViews()
     }
@@ -31,15 +33,12 @@ class InputText extends React.Component {
         switch (this.props.type) {
             case TYPE_CURRENCY: 0
                 this.state.maxLength = 15
-                this.state.keyboardType = "numeric"
                 break;
             case TYPE_DATE:
                 this.state.maxLength = 10
-                this.state.keyboardType = "numeric"
                 break;
             case TYPE_PERCENT:
                 this.state.maxLength = 4
-                this.state.keyboardType = "numeric"
                 break;
         }
     }
@@ -48,9 +47,24 @@ class InputText extends React.Component {
         this.setState({ text: value })
     }
 
-    handleKeyPress = (e) => {
-        if (e.nativeEvent.key == KEY_CODE_BACKSPACE) return
+    handleKeyPress = ({ key } = e.nativeEvent) => {
+        if (key == KEY_CODE_BACKSPACE) return
         this.applyMask()
+    }
+
+    handleSelectionChange() {
+        if (this.props.type == TYPE_PERCENT) {
+            this.focusBeforePercent()
+        }
+    }
+
+    focusBeforePercent() {
+        this.myInput.setNativeProps({
+            selection: {
+                start: this.state.text.length - 1,
+                end: this.state.text.length - 1
+            }
+        })
     }
 
     applyMask() {
@@ -71,6 +85,7 @@ class InputText extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.label}>{this.props.label}</Text>
                 <TextInput
+                    ref={input => this.myInput = input}
                     style={styles.textInput}
                     placeholder={this.props.placeholder}
                     maxLength={this.state.maxLength}
@@ -78,6 +93,7 @@ class InputText extends React.Component {
                     value={this.state.text}
                     onChangeText={this.handleChangeText}
                     onKeyPress={this.handleKeyPress}
+                    onSelectionChange={this.handleSelectionChange}
                 />
             </View>
         );
